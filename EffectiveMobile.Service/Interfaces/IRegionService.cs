@@ -12,7 +12,7 @@ namespace EffectiveMobile.Service.Interfaces
         Task<bool> DeleteAsync(long id);
         Task<RegionForResultDto>GetByIdAsync(long id);
         Task<IEnumerable<RegionForResultDto>> GetAllAsync();
-        Task<RegionForResultDto>UpdateAsync(RegionForUpdateDto dto);
+        Task<RegionForResultDto>UpdateAsync(long id ,RegionForUpdateDto dto);
         Task<RegionForResultDto>CreateAsync(RegionForCreationDto dto);
 
     }
