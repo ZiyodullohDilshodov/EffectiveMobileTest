@@ -5,12 +5,6 @@ using EffectiveMobile.Service.DTOs.Region;
 using EffectiveMobile.Service.Exceptions;
 using EffectiveMobile.Service.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EffectiveMobile.Service.Services
 {
@@ -48,7 +42,6 @@ namespace EffectiveMobile.Service.Services
 
             if (region == null)
                 throw new EffectiveMobileException(404, "Region is not found");
-
            
             return await _regionRepository.DeleteAsync(id);
 

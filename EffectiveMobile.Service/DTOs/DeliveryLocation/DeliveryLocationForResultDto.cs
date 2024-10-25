@@ -9,8 +9,8 @@ namespace EffectiveMobile.Service.DTOs.DeliveryLocation
     public  class DeliveryLocationForResultDto
     {
         public long Id {  get; set; }
-        public string Address { get; set; }
-        public decimal Latitude { get; set; }
         public decimal Longitude { get; set; }
+        public decimal Latitude { get; set; }
+        public string Address { get; set; }
     }
 }

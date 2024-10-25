@@ -13,6 +13,6 @@ namespace EffectiveMobile.Service.Interfaces
         Task<OrderForResultDto>GetByIdAsync(long id);
         Task<IEnumerable<OrderForResultDto>> GetAllAsync();
         Task<OrderForResultDto> CreateAsync(OrderForCreationDto dto);
-        Task<OrderForResultDto> UpdateAsync(OrderForUpdateDto dto);
+        Task<OrderForResultDto> UpdateAsync(long id,OrderForUpdateDto dto);
     }
 }
