@@ -17,10 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\EffectiveMobile.Data\EffectiveMobile.Data.csproj" />
     <ProjectReference Include="..\EffectiveMobile.Domain\EffectiveMobile.Domain.csproj" />
     <ProjectReference Include="..\EffectiveMobile.Service\EffectiveMobile.Service.csproj" />

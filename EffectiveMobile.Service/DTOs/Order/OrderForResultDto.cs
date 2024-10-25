@@ -11,5 +11,8 @@ namespace EffectiveMobile.Service.DTOs.Order
         public int Id { get; set; }
         public double Weight { get; set; }
         public string DeliveryTime { get; set; }
+
+        public long RegionId { get; set; }
+        public long DeliveryLocationId { get; set; }
     }
 }

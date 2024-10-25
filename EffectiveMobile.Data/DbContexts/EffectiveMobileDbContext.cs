@@ -12,7 +12,6 @@ namespace EffectiveMobile.Data.DbContexts
 
         public DbSet<Order> Oreders { get; set; }
         public DbSet<Region> Region { get; set; }
-        public DbSet<OrderRegion> OredersRegion { get; set; }
         public DbSet<DeliveryLocation> DeliveryLocations { get; set; }
 
     }

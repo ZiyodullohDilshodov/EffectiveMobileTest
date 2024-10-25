@@ -12,7 +12,7 @@ namespace EffectiveMobile.Service.Interfaces
         Task<bool>DeleteAsync(long id);
         Task<DeliveryLocationForResultDto> GetByIdAsync(long id);
         Task<IEnumerable<DeliveryLocationForResultDto>> GetAllAsync();
-        Task<DeliveryLocationForResultDto> UpdateAsync(DeliveryLocationForUpdateDto dto);
+        Task<DeliveryLocationForResultDto> UpdateAsync(long id,DeliveryLocationForUpdateDto dto);
         Task<DeliveryLocationForResultDto> CreateAsync(DeliveryLocationForCreationDto dto);
     }
 }

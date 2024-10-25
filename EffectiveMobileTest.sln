@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EffectiveMobileTest.Web.Api", "EffectiveMobileTest.Web.Api\EffectiveMobileTest.Web.Api.csproj", "{34AD1873-3D99-4C4B-8943-83388B536A4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EffectiveMobileTest.Web.Api", "EffectiveMobileTest.Web.Api\EffectiveMobileTest.Web.Api.csproj", "{34AD1873-3D99-4C4B-8943-83388B536A4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EffectiveMobile.Data", "EffectiveMobile.Data\EffectiveMobile.Data.csproj", "{7695D02C-0BBE-4C44-AF18-048E093BE2B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EffectiveMobile.Data", "EffectiveMobile.Data\EffectiveMobile.Data.csproj", "{7695D02C-0BBE-4C44-AF18-048E093BE2B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EffectiveMobile.Service", "EffectiveMobile.Service\EffectiveMobile.Service.csproj", "{69E8DFF5-7EE1-42A8-8C6D-6CCCD0B8499F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EffectiveMobile.Service", "EffectiveMobile.Service\EffectiveMobile.Service.csproj", "{69E8DFF5-7EE1-42A8-8C6D-6CCCD0B8499F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EffectiveMobile.Domain", "EffectiveMobile.Domain\EffectiveMobile.Domain.csproj", "{265D4B05-3D30-41F5-9DF5-DE4ED6E28914}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EffectiveMobile.Domain", "EffectiveMobile.Domain\EffectiveMobile.Domain.csproj", "{265D4B05-3D30-41F5-9DF5-DE4ED6E28914}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

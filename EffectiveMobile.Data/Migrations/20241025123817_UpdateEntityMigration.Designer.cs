@@ -3,6 +3,7 @@ using System;
 using EffectiveMobile.Data.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EffectiveMobile.Data.Migrations
 {
     [DbContext(typeof(EffectiveMobileDbContext))]
-    partial class EffectiveMobileDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241025123817_UpdateEntityMigration")]
+    partial class UpdateEntityMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,9 +39,6 @@ namespace EffectiveMobile.Data.Migrations
 
                     b.Property<DateTime>("CreatedAtt")
                         .HasColumnType("timestamp with time zone");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
 
                     b.Property<decimal>("Latitude")
                         .HasColumnType("numeric");
