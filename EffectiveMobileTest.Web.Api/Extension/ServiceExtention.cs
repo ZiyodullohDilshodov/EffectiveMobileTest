@@ -1,5 +1,4 @@
 ﻿using EffectiveMobile.Data.IRepositories;
-using EffectiveMobile.Data.Migrations;
 using EffectiveMobile.Data.Repositories;
 using EffectiveMobile.Service.Interfaces;
 using EffectiveMobile.Service.Services;
@@ -17,10 +16,6 @@ namespace EffectiveMobileTest.Web.Api.Extension
 
             services.AddScoped<IRegionService, RegionService>();
             services.AddScoped<IRegionRepository, RegionRepository>();
-
-            services.AddScoped<IDeliveryLocationRepository, DeliveryLocationRepository>();
-            services.AddScoped<IDeliveryLocationSerive, DeliveryLocationService>();
-
         }
     }
 }
