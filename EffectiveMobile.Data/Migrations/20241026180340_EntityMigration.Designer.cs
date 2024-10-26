@@ -3,6 +3,7 @@ using System;
 using EffectiveMobile.Data.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EffectiveMobile.Data.Migrations
 {
     [DbContext(typeof(EffectiveMobileDbContext))]
-    partial class EffectiveMobileDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241026180340_EntityMigration")]
+    partial class EntityMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -83,17 +86,12 @@ namespace EffectiveMobile.Data.Migrations
                     b.Property<long>("NumberOfOrders")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("OrderId")
-                        .HasColumnType("bigint");
-
                     b.Property<DateTime>("UpdatedAtt")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrderId");
-
-                    b.ToTable("Regions");
+                    b.ToTable("Region");
                 });
 
             modelBuilder.Entity("EffectiveMobile.Domain.Entities.Order", b =>
@@ -105,18 +103,6 @@ namespace EffectiveMobile.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Region");
-                });
-
-            modelBuilder.Entity("EffectiveMobile.Domain.Entities.Region", b =>
-                {
-                    b.HasOne("EffectiveMobile.Domain.Entities.Order", null)
-                        .WithMany("Locations")
-                        .HasForeignKey("OrderId");
-                });
-
-            modelBuilder.Entity("EffectiveMobile.Domain.Entities.Order", b =>
-                {
-                    b.Navigation("Locations");
                 });
 #pragma warning restore 612, 618
         }

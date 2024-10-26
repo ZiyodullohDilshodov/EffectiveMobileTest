@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EffectiveMobile.Data.Migrations
 {
     [DbContext(typeof(EffectiveMobileDbContext))]
-    [Migration("20241025123817_UpdateEntityMigration")]
-    partial class UpdateEntityMigration
+    [Migration("20241026192406_CollectionMigration")]
+    partial class CollectionMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace EffectiveMobile.Data.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("EffectiveMobile.Domain.Entities.DeliveryLocation", b =>
+            modelBuilder.Entity("EffectiveMobile.Domain.Entities.Order", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -40,40 +40,17 @@ namespace EffectiveMobile.Data.Migrations
                     b.Property<DateTime>("CreatedAtt")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<DateTime>("DeliveryTime")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
                     b.Property<decimal>("Latitude")
                         .HasColumnType("numeric");
 
                     b.Property<decimal>("Longitude")
                         .HasColumnType("numeric");
-
-                    b.Property<DateTime>("UpdatedAtt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("DeliveryLocations");
-                });
-
-            modelBuilder.Entity("EffectiveMobile.Domain.Entities.Order", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
-
-                    b.Property<DateTime>("CreatedAtt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<long>("DeliveryLocationId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("DeliveryTime")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
 
                     b.Property<long>("RegionId")
                         .HasColumnType("bigint");
@@ -85,8 +62,6 @@ namespace EffectiveMobile.Data.Migrations
                         .HasColumnType("double precision");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DeliveryLocationId");
 
                     b.HasIndex("RegionId");
 
@@ -121,19 +96,11 @@ namespace EffectiveMobile.Data.Migrations
 
             modelBuilder.Entity("EffectiveMobile.Domain.Entities.Order", b =>
                 {
-                    b.HasOne("EffectiveMobile.Domain.Entities.DeliveryLocation", "DeliveryLocation")
-                        .WithMany()
-                        .HasForeignKey("DeliveryLocationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("EffectiveMobile.Domain.Entities.Region", "Region")
                         .WithMany()
                         .HasForeignKey("RegionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("DeliveryLocation");
 
                     b.Navigation("Region");
                 });
