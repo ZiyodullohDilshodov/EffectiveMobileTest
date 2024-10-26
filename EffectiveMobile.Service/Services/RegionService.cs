@@ -30,6 +30,7 @@ namespace EffectiveMobile.Service.Services
                 throw new EffectiveMobileException(409, "Region is already exists");
 
             var mappedRegionData =  _mapper.Map<Region>(dto);
+            mappedRegionData.CreatedAtt = DateTime.UtcNow;
             return _mapper.Map<RegionForResultDto>(await _regionRepository.CreateAsync(mappedRegionData));
         }
 
@@ -71,7 +72,7 @@ namespace EffectiveMobile.Service.Services
             if (region == null)
                 throw new EffectiveMobileException(404, "Region is not found");
 
-            var mappedRegionData = _mapper.Map<Region>(dto);
+            var mappedRegionData = _mapper.Map(dto,region);
             mappedRegionData.CreatedAtt = DateTime.UtcNow;
 
             return _mapper.Map<RegionForResultDto>(await _regionRepository.UpdateAsync(mappedRegionData));

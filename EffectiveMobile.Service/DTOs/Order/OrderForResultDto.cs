@@ -1,18 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EffectiveMobile.Service.DTOs.Region;
 
 namespace EffectiveMobile.Service.DTOs.Order
 {
     public  class OrderForResultDto
     {
-        public int Id { get; set; }
+        public long  Id { get; set; }
         public double Weight { get; set; }
-        public string DeliveryTime { get; set; }
-
+        public DateTime DeliveryTime { get; set; }
         public long RegionId { get; set; }
-        public long DeliveryLocationId { get; set; }
+        public decimal Longitude { get; set; }
+        public decimal Latitude { get; set; }
+        public string Address { get; set; }
+        public DateTime CreatedAtt { get; set; }
+
+        public ICollection<RegionForResultDto> Locations { get; set; }
     }
 }

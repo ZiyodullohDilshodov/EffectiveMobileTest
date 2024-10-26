@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using EffectiveMobile.Domain.Entities;
-using EffectiveMobile.Service.DTOs.DeliveryLocation;
 using EffectiveMobile.Service.DTOs.Order;
 using EffectiveMobile.Service.DTOs.Region;
 
@@ -18,10 +17,7 @@ namespace EffectiveMobile.Service.Mappers
             CreateMap<Order,OrderForResultDto>().ReverseMap();
             CreateMap<Order,OrderForUpdateDto>().ReverseMap();  
 
-            CreateMap<DeliveryLocation,DeliveryLocationForCreationDto>().ReverseMap();
-            CreateMap<DeliveryLocation,DeliveryLocationForResultDto>().ReverseMap();
-            CreateMap<DeliveryLocation,DeliveryLocationForUpdateDto>().ReverseMap();
-        
+           
         
         }
     }

@@ -16,4 +16,8 @@
     <ProjectReference Include="..\EffectiveMobile.Domain\EffectiveMobile.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

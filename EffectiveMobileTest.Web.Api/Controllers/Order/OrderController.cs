@@ -1,5 +1,4 @@
-﻿using EffectiveMobile.Data.IRepositories;
-using EffectiveMobile.Service.DTOs.Order;
+﻿using EffectiveMobile.Service.DTOs.Order;
 using EffectiveMobile.Service.Interfaces;
 using EffectiveMobileTest.Web.Api.Helpers;
 using Microsoft.AspNetCore.Mvc;

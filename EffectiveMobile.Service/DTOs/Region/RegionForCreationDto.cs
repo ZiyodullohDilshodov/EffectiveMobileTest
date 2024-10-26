@@ -9,6 +9,5 @@ namespace EffectiveMobile.Service.DTOs.Region
     public  class RegionForCreationDto
     {
         public string Name { get; set; }
-        public long NumberOfOrders { get; set; }
     }
 }
