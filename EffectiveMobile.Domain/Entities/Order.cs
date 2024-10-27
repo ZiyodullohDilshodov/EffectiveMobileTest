@@ -11,10 +11,8 @@ namespace EffectiveMobile.Domain.Entities
         public  DateTime DeliveryTime {  get; set; }
         public bool IsDeleted { get; set; } = false;
 
-
-
         public long RegionId { get; set; }
         public Region Region { get; set; }
-        public ICollection<Region>Locations { get; set; }
+       
     }
 }

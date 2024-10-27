@@ -9,5 +9,6 @@ namespace EffectiveMobile.Service.DTOs.Region
     public  class RegionForUpdateDto
     {
         public string Name { get; set; }
+
     }
 }

@@ -6,5 +6,6 @@ namespace EffectiveMobile.Domain.Entities
     {
         public string Name { get; set; }
         public long NumberOfOrders {  get; set; }
+        public ICollection<Order> Orders { get; set; }
     }
 }

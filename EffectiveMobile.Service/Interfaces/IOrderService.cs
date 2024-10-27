@@ -14,5 +14,7 @@ namespace EffectiveMobile.Service.Interfaces
         Task<IEnumerable<OrderForResultDto>> GetAllAsync();
         Task<OrderForResultDto> CreateAsync(OrderForCreationDto dto);
         Task<OrderForResultDto> UpdateAsync(long id,OrderForUpdateDto dto);
+        Task<IEnumerable<OrderForResultDto>> Today_sDeliveryOrders();
+        Task<IEnumerable<OrderForResultDto>> OrdersWithinHalfAnHour();
     }
 }

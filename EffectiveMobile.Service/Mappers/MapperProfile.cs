@@ -16,9 +16,6 @@ namespace EffectiveMobile.Service.Mappers
             CreateMap<Order,OrderForCreationDto>().ReverseMap();
             CreateMap<Order,OrderForResultDto>().ReverseMap();
             CreateMap<Order,OrderForUpdateDto>().ReverseMap();  
-
-           
-        
         }
     }
 }

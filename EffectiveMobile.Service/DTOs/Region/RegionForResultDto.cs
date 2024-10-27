@@ -1,4 +1,6 @@
-﻿namespace EffectiveMobile.Service.DTOs.Region
+﻿using EffectiveMobile.Service.DTOs.Order;
+
+namespace EffectiveMobile.Service.DTOs.Region
 {
     public  class RegionForResultDto
     {
@@ -7,6 +9,6 @@
         public long NumberOfOrders { get; set; }
         public DateTime CreatedAtt { get; set; }
 
-
+        public ICollection<OrderForResultDto> Orders { get; set; }
     }
 }
