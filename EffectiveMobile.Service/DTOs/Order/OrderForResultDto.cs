@@ -13,6 +13,6 @@ namespace EffectiveMobile.Service.DTOs.Order
         public string Address { get; set; }
         public DateTime CreatedAtt { get; set; }
 
-        public ICollection<RegionForResultDto> Locations { get; set; }
+        
     }
 }

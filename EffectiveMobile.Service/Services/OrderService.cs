@@ -14,7 +14,6 @@ namespace EffectiveMobile.Service.Services
         private readonly IOrderRepository _orderRepository;
         private readonly IRegionRepository _regionRepository;
 
-
         public OrderService(IOrderRepository orderRepository, IMapper mapper,
                              IRegionRepository regionRepository)
         {
@@ -24,7 +23,7 @@ namespace EffectiveMobile.Service.Services
         }
         public async Task<OrderForResultDto> CreateAsync(OrderForCreationDto dto)
         {
-            if (dto.Weight < 0)
+            if (dto.Weight <= 0)
                 throw new EffectiveMobileException(400, "Order Weight < 0");
 
             var region = await _regionRepository.GetAll()
@@ -33,9 +32,14 @@ namespace EffectiveMobile.Service.Services
                 .FirstOrDefaultAsync();
 
             if (region == null)
-                throw new EffectiveMobileException(404, "Region is not found");
+                throw new EffectiveMobileException(404, "Region is not found !!!");
 
-            
+            if (dto.Address == null || dto.Address == " ")
+                throw new EffectiveMobileException(400, "Addres not found !!!!");
+
+            if (dto.Longitude <= 0 || dto.Latitude <= 0)
+                throw new EffectiveMobileException(400, "Longitude or Latitude can not zero {0} {EXAMLE} 0.12 or 1254 !!!");
+
             var updateRegionNumberOfOrders = _mapper.Map<Region>(region);
             var oldRegionNumberOfOrder = updateRegionNumberOfOrders.NumberOfOrders;
             updateRegionNumberOfOrders.NumberOfOrders++;
@@ -50,12 +54,14 @@ namespace EffectiveMobile.Service.Services
             mappedOrder.CreatedAtt = DateTime.UtcNow;
 
             return _mapper.Map<OrderForResultDto>(await _orderRepository.CreateAsync(mappedOrder));
-
-
         }
 
         public async Task<bool> DeleteAsync(long id)
         {
+
+            if (id <= 0)
+                throw new EffectiveMobileException(400, "Order id can not zero {0} !!!");
+
             var order  = await _orderRepository.GetAll()
                 .Where(x=>x.Id==id)
                 .AsNoTracking()
@@ -78,7 +84,6 @@ namespace EffectiveMobile.Service.Services
         {
             var orders = await _orderRepository.GetAll()
                 .Where(x => x.IsDeleted == false)
-                .Include(x=>x.Locations)
                 .AsNoTracking()
                 .ToListAsync();
 
@@ -87,9 +92,11 @@ namespace EffectiveMobile.Service.Services
 
         public async Task<OrderForResultDto> GetByIdAsync(long id)
         {
+            if (id <= 0)
+                throw new EffectiveMobileException(400, "Order id can not zero {0} !!!");
+
             var order = await _orderRepository.GetAll()
                 .Where (x => x.Id==id && x.IsDeleted == false)
-                .Include(x=>x.Region)
                 .AsNoTracking()
                 .FirstOrDefaultAsync();
 
@@ -101,6 +108,9 @@ namespace EffectiveMobile.Service.Services
 
         public async Task<OrderForResultDto> UpdateAsync(long id,OrderForUpdateDto dto)
         {
+            if (id <= 0)
+                throw new EffectiveMobileException(400, "Order id can not zero {0} !!!");
+
             var order = await _orderRepository.GetAll()
                 .Where(x => x.Id == id && x.IsDeleted == false)
                 .AsNoTracking()
@@ -109,10 +119,59 @@ namespace EffectiveMobile.Service.Services
             if (order == null)
                 throw new EffectiveMobileException(404, "Order is not found");
 
+            if (dto.Address == null || dto.Address == " ")
+                throw new EffectiveMobileException(400, "Addres not found !!!!");
+
+            if (dto.Longitude <= 0 || dto.Latitude <= 0)
+                throw new EffectiveMobileException(400, "Longitude or Latitude can not zero {0} {EXAMLE} 0.12 or 1254 !!!");
+
             var mappedOrderData = _mapper.Map(dto,order);
             mappedOrderData.UpdatedAtt = DateTime.UtcNow;
 
             return _mapper.Map<OrderForResultDto>(await _orderRepository.UpdateAsync(mappedOrderData));
+        }
+
+        public async Task<IEnumerable<OrderForResultDto>> Today_sDeliveryOrders()
+        {
+            DateTime Time = DateTime.Now;
+            int Minut = Time.Minute;
+            
+            var orders = await _orderRepository.GetAll()
+                .Where(x => x.IsDeleted == false && 
+                       x.DeliveryTime.Day==Time.Day)
+                .AsNoTracking()
+                .ToListAsync();
+
+            return _mapper.Map<IEnumerable<OrderForResultDto>>(orders);
+        }
+
+        public async Task<IEnumerable<OrderForResultDto>>OrdersWithinHalfAnHour()
+        {
+            DateTime Time = DateTime.Now;
+            int Minut = Time.Minute;
+            int Hour = Time.Hour;
+
+            if (Minut >= 29)
+            {
+                Minut += 30;
+            }
+            else
+            {
+                Hour += 1;
+                Minut -= 30;
+            }
+
+            var orders = await _orderRepository.GetAll()
+                .Where(x => x.IsDeleted == false &&
+                       x.DeliveryTime.Day == Time.Day &&
+                       x.DeliveryTime.Hour <= Hour &&
+                       x.DeliveryTime.Minute <= Minut&&
+                       x.DeliveryTime.Hour>=Time.Hour&&
+                       x.DeliveryTime.Minute>=Time.Minute)
+                .AsNoTracking()
+                .ToListAsync();
+
+            return _mapper.Map<IEnumerable<OrderForResultDto>>(orders);
         }
     }
 }

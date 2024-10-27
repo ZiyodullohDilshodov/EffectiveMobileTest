@@ -43,6 +43,23 @@ namespace EffectiveMobileTest.Web.Api.Controllers.Order
                 Data = await _orderService.GetByIdAsync(id)
             });
 
+        [HttpGet("Get today's delivery orders")]
+        public async Task<IActionResult> Today_sDeliveryOrders()
+            => Ok(new Response
+            {
+                StatusCode =200,
+                StatusMassage = "OK",
+                Data = await _orderService.Today_sDeliveryOrders()
+            });
+
+        [HttpGet("Orders within half an hour")]
+        public async Task<IActionResult> OrdersWithinHalfAnHour()
+            => Ok(new Response
+            {
+                StatusCode = 200,
+                StatusMassage = "OK",
+                Data = await _orderService.OrdersWithinHalfAnHour()
+            });
 
         [HttpPut("{id}")]
         public async Task<IActionResult> ModifyAsync(long id, OrderForUpdateDto dto)
