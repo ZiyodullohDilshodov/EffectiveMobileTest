@@ -1,2 +1,1 @@
-# EffectiveMobileTest
 ![Uploading image.png…]()
